@@ -24,13 +24,13 @@
     background: #004980;
   }
 
-  .game__menu {
+  .game {
     display: flex;
     justify-content: center;
     padding-top: 158px;
   }
 
-  .game__box {
+  .game__menu {
     width: 480px;
     height: 459px;
     background: #C2F5FF;
@@ -40,7 +40,7 @@
     align-items: center;
   }
 
-  .heading{
+  .game__menu-heading{
     padding-top: 52px;
     text-align: center;
     font-family: 'StratosSkyeng';
@@ -51,7 +51,7 @@
     color: #004980;
   }
 
-  .difficulty__box {
+  .difficulty {
     padding-top: 48px;
     display: flex;
     flex-direction: row;
@@ -59,7 +59,7 @@
     
   }
 
-  .difficulty__type--button {
+  .difficulty__type {
     width: 98px;
     height: 98px;
     background: #FFFFFF;
@@ -73,7 +73,7 @@
     color: #0080C1;
   }
 
-  .game__start--button {
+  .game__menu-button {
     width: 246px;
     height: 50px;
     background: #7AC100;
