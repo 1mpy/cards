@@ -1,4 +1,4 @@
-export function Easy(appEl) {
+export function easyMode(appEl) {
   const appHtml = `<section class="gamebox">
     <div class="gamebox__timer">Таймер      
     </div>

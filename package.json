@@ -1,0 +1,29 @@
+{
+  "name": "cards",
+  "version": "1.0.0",
+  "description": "Guess where the pair cards are?",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier —write .",
+    "lint:js": "eslint ./*.js",
+    "lint:css": "stylelint ./*.css",
+    "lint:scss": "stylelint ./*.scss",
+    "lint": "npm run lint:js && npm run lint:css",
+    "prepare": "husky install"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
+    "stylelint": "^15.6.2",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-prettier": "^3.0.0"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1"
+  }
+}

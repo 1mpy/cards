@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -8,16 +9,11 @@
   font-style: normal;
   font-weight: 400;
   /* Браузер сначала попробует найти шрифт локально */
-  src: local("StratosSkyeng"),
-    /* Если не получилось, загрузит woff2 */
-      url("./fonts/stratosskyengweb-regular.woff2") format("woff2"),
-    /* Если браузер не поддерживает woff2, загрузит woff */
-      url("./fonts/stratosskyengweb-regular.woff") format("woff");
+  src: local("StratosSkyeng"), url("./fonts/stratosskyengweb-regular.woff2") format("woff2"), url("./fonts/stratosskyengweb-regular.woff") format("woff");
 }
-
 .center {
-  padding-left: calc(50% - 600px);
-  padding-right: calc(50% - 600px);
+  padding-left: calc(50% - 512px);
+  padding-right: calc(50% - 512px);
 }
 
 .main {
@@ -49,6 +45,7 @@
   font-size: 40px;
   line-height: 48px;
   color: #004980;
+  width: 975px;
 }
 
 .difficulty {
@@ -58,15 +55,16 @@
   align-items: center;
 }
 
-.difficulty-box{
+.difficulty-box {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: nowrap;
-  column-gap: 24px;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
 }
 
-.difficulty input[type="radio"] {
+.difficulty input[type=radio] {
   display: none;
 }
 
@@ -83,13 +81,13 @@
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  color: #0080c1;    
+  color: #0080c1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.difficulty input[type="radio"]:checked+label {
+.difficulty input[type=radio]:checked + label {
   background-color: #09522a;
 }
 
@@ -113,4 +111,71 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
+  cursor: pointer;
 }
+
+.gamebox-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-top: 50px;
+}
+
+.gamebox__restart-button {
+  width: 246px;
+  height: 50px;
+  background: #7AC100;
+  border-radius: 12px;
+  border: transparent;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.gamebox__field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 50px;
+  justify-content: space-between;
+}
+
+.gamebox__field-card {
+  width: 95px;
+  height: 133px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.gamebox__timer-units {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #FFFFFF;
+  display: inline-flex;
+  padding-left: 39px;
+}
+.gamebox__timer-units-sek {
+  padding-left: 57px;
+}
+
+.gamebox__timer-digits {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #FFFFFF;
+}/*# sourceMappingURL=style.css.map */
