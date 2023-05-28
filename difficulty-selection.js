@@ -1,4 +1,4 @@
-import { Easy } from "./components/difficulty-1.js";
+import { easyMode } from "./components/difficulty-1.js";
 
 window.application = {
   level: null,
@@ -9,7 +9,7 @@ export function gameDifficulty(appEl) {
     const appHtml = `<section class="game">
         <div class="game__menu">          
             <h2 class="game__menu-heading">
-                Выбери <br />
+                Выбери <br/>
                 сложность
               </h2>
             <form class="difficulty" id="difficulty-form">
@@ -32,8 +32,8 @@ export function gameDifficulty(appEl) {
   };
   renderGameDifficulty(appEl);
 
-  const startButton = document.querySelector('#difficulty-form');
-
+  const startButton = document.querySelector("#difficulty-form");
+  // https://ru.stackoverflow.com/questions/845045/%D0%A1%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B5-submit-%D0%B8-%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA-%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F
   //   console.log(difficultyLevels);
   //   console.log(startButton);
   startButton.addEventListener("submit", () => {
@@ -42,9 +42,7 @@ export function gameDifficulty(appEl) {
       if (difficultyLevel.checked) {
         window.application.level = difficultyLevel.value;
       }
-      Easy(appEl);
-
+      easyMode(appEl);
     }
-
   });
 }
