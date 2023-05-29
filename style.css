@@ -147,14 +147,39 @@
   gap: 15px;
   padding-top: 50px;
   justify-content: space-between;
+  margin: auto;
 }
 
 .gamebox__field-card {
-  width: 95px;
-  height: 133px;
   cursor: pointer;
-  display: flex;
-  flex-direction: column-reverse;
+  height: 132px;
+  width: 83px;
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.gamebox__field-card:active {
+  cursor: pointer;
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.gamebox__field-card.flip {
+  transform: rotateY(180deg);
+}
+
+.gamebox__field-card-face,
+.gamebox__field-card-back {
+  position: absolute;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+
+.gamebox__field-card-face {
+  transform: rotateY(180deg);
 }
 
 .gamebox__timer-units {
