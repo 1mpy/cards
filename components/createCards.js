@@ -68,7 +68,7 @@ export function gameMode(appEl) {
   let cardString = ``;
 
   cardsUrls.forEach((item) => {
-    cardString += `<div class="gamebox__field-card" data-rank="${item.rank}" data-nominal="${item.nominal}">
+    cardString += `<div class="gamebox__field-card flip" data-rank="${item.rank}" data-nominal="${item.nominal}">
     <img class="gamebox__field-card-face" src="${item.url}" />
     <img class="gamebox__field-card-back" src="./static/images/card_back.svg" />
     </div>`
@@ -89,6 +89,7 @@ export function gameMode(appEl) {
     </section>`;
 
     appEl.innerHTML = appHtml;
+
   
     let isItFlipped = false;
     let firstCard, secondCard;
@@ -97,12 +98,24 @@ export function gameMode(appEl) {
     //Переворачиваем карту
     console.log(cards);
     
+    const timer = () => {
+      blockField = true;
+      setTimeout(() => {
+          cards.forEach((element) => {
+              element.classList.remove("flip");
+              blockField = false;
+          });
+      }, 5000);
+  };
+  // необходима блокировка карт на момент просмотра, с последующей разблокировкой
+  timer();
+
     // console.log(cards);
     function flipCard() {
       if (blockField) return;
       if (this === firstCard) return;
     
-      this.classList.toggle("flip");
+      this.classList.add("flip");
     
       if (!isItFlipped) {
         isItFlipped = true;
@@ -116,6 +129,7 @@ export function gameMode(appEl) {
         match();
       }
       // console.log('done');
+      
     }
     
     // console.log("click");
@@ -126,11 +140,16 @@ export function gameMode(appEl) {
     // проверка на совпадение
     
     function match() {
-      if (firstCard.dataset.rank === secondCard.dataset.rank && firstCard.dataset.nominal === secondCard.dataset.nominal) {
-        preventClick();
-      } else {
-        turnBack();
-      }
+      setTimeout(() => {        // необходима задержка по выводу сообщения о победе/поражении, т.к. сравнение происходит в момент клика, а это очень быстро = bad UX/UI
+        if (firstCard.dataset.rank === secondCard.dataset.rank && firstCard.dataset.nominal === secondCard.dataset.nominal) {
+          preventClick();
+          alert('Вы выйграли')
+        } else {
+          alert('Вы проиграли')
+          turnBack();
+        }
+      }, 500);
+
     }
     // запрет на повторный клик по карте
     
