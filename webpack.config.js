@@ -4,14 +4,17 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const isProduction = process.env.NODE_ENV === "development";
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: './main.js',
     mode: isProduction === 'production' ? 'production' : 'development',
     module: {
         rules: [
-            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
@@ -24,6 +27,7 @@ module.exports = {
     },
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],
+        minimize: true,
     },
     devtool:
         process.env.NODE_ENV === 'production'
@@ -40,8 +44,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
+            filename: 'index.html',
         }),
-        new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'style.css',
+        }),
     ],
 };

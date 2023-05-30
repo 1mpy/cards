@@ -1,6 +1,4 @@
 import { gameMode } from "./components/createCards.js";
-// import { mediumMode } from "./components/difficulty-2.js";
-// import { hardMode } from "./components/difficulty-3.js";
 
 
 window.application = {
