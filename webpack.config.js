@@ -27,7 +27,7 @@ module.exports = {
     },
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],
-        minimize: true,
+        // minimize: true,
     },
     devtool:
         process.env.NODE_ENV === 'production'
@@ -40,7 +40,12 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin({
-            patterns: [{ from: 'static', to: 'static' }],
+            patterns: [
+                { from: 'static', to: 'static' },
+                { from: 'style.css', to: 'static' },
+                {from: './fonts/stratosskyengweb-regular.woff', to: 'static'},
+                {from: './fonts/stratosskyengweb-regular.woff2', to: 'static'}
+            ],
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
