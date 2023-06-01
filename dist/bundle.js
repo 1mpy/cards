@@ -37,7 +37,7 @@ function gameMode(appEl) {
       'seven',
       'six',
   ];
-  const cardsNominals = ['spades', 'clubs', 'diamonds', 'hearts'];
+  const cardsSuits = ['spades', 'clubs', 'diamonds', 'hearts'];
   const cardsUrls = [];
 
   const getRundommNumber = (number) => {
@@ -46,7 +46,7 @@ function gameMode(appEl) {
 
   for (let i = 0; i < pairNumber; i++) {
       let indexRank = getRundommNumber(9); // получаем случайный ранг карты
-      let indexNominal = getRundommNumber(4); // получаем случайную масть карты
+      let indexSuit = getRundommNumber(4); // получаем случайную масть карты
 
       // проверка на дубликаты
 
@@ -55,22 +55,22 @@ function gameMode(appEl) {
           uniqueCard = !cardsUrls.find((elem) => {
               return (
                   elem.rank === cardRanks[indexRank] &&
-                  elem.nominal === cardsNominals[indexNominal] // возвращает элемента из массива, удовлетворяющий этому условию, инач undefined
+                  elem.Suit === cardsSuits[indexSuit] // возвращает элемента из массива, удовлетворяющий этому условию, инач undefined
               ); // проверяем ранг и масть  элемента с полученными индексами с теми что уде есть в массиве
           });
           if (!uniqueCard) {
               indexRank = getRundommNumber(9); // еще раз получаем случайный ранг карты
-              indexNominal = getRundommNumber(4);
+              indexSuit = getRundommNumber(4);
           }
       }
 
       let receivedCard = {
           rank: cardRanks[indexRank],
-          nominal: cardsNominals[indexNominal],
+          Suit: cardsSuits[indexSuit],
           cardId: getRundommNumber(100), // даем случаный айди карты, чтобы было удобнее соритровать
       };
 
-      receivedCard.url = `./static/images/${receivedCard.nominal}-${receivedCard.rank}.png`;
+      receivedCard.url = `./static/images/${receivedCard.Suit}-${receivedCard.rank}.png`;
       cardsUrls.push(receivedCard);
       cardsUrls.push({ ...receivedCard, cardId: getRundommNumber(100) }); // копируем содержимое объекта receivedCard и имзеняем параметр cardId
   }
@@ -86,7 +86,7 @@ function gameMode(appEl) {
   let cardString = ``;
 
   cardsUrls.forEach((item) => {
-      cardString += `<div class="gamebox__field-card flip" data-rank="${item.rank}" data-nominal="${item.nominal}">
+      cardString += `<div class="gamebox__field-card flip" data-rank="${item.rank}" data-Suit="${item.Suit}">
     <img class="gamebox__field-card-face" src="${item.url}" />
     <img class="gamebox__field-card-back" src="./static/images/card_back.svg" />
   </div>`;
@@ -97,16 +97,27 @@ function gameMode(appEl) {
       <div class="gamebox__timer">
         <div class="gamebox__timer-units">min</div>
         <div class="gamebox__timer-units gamebox__timer-units-sek">sek</div>
-        <label class="gamebox__timer-digits" id="minutes">00</label><span class='gamebox__timer-digits'>:</span><label class="gamebox__timer-digits" id="seconds">00</label>
+        <label class="gamebox__timer-digits" id="minutes" data-min="">00</label><span class='gamebox__timer-digits'>.</span><label class="gamebox__timer-digits" id="seconds" data-sec="">00</label>
       </div>
       <button class="gamebox__restart-button" id="restart">Начать заново</button>
     </div>
     <div class="gamebox__field">
   ${cardString}
   </div>
-  </section>`;
+  </section>
+<div id="myModal" class="modal">
+<div class="modal-content">
+    <img class="front-face"  src=""/>    
+    <p>Вы проиграли!</p>
+    <p> Затраченное время:</p>
+    <p id = "modal-time">.</p>
+    <button class="gamebox__restart-button" id="restart">Начать заново</button>
+
+</div>`;
 
   appEl.innerHTML = appHtml;
+
+//РЕСТАРТ
 
   function restart() {
       const restartButton = document.getElementById('restart');
@@ -117,35 +128,59 @@ function gameMode(appEl) {
 
   restart();
 
-  function timer() {
-      const minutesLabel = document.getElementById('minutes');
-      const secondsLabel = document.getElementById('seconds');
-      let totalSeconds = 0;
-      setInterval(setTime, 1000);
+//   function winCheck (){
+//     const flippedCards = querySelectorAll ('.flip');
 
-      function setTime() {
+//     console.log(fliped.length);
+//   }
+
+
+  // Таймер
+
+  const minutesLabel = document.getElementById('minutes');
+  const secondsLabel = document.getElementById('seconds');
+  let totalSeconds = 0;
+  const myInterval = setInterval(timer, 1000);
+
+  function timer() {
           ++totalSeconds;
           secondsLabel.innerHTML = pad(totalSeconds % 60);
           minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-      }
-
-      function pad(val) {
-          var valString = val + '';
-          if (valString.length < 2) {
-              return '0' + valString;
-          } else {
-              return valString;
-          }
-      }
+          function pad(val) {
+            var valString = val + '';
+            if (valString.length < 2) {
+                return '0' + valString;
+            } else {
+                return valString;
+            }
+        }
   }
 
   timer();
+
+//   function getTime() {
+    const allMinutes = document.getElementById("minutes").innerHTML;
+    const allSeconds = document.getElementById("seconds").innerHTML;
+    console.log(allMinutes);
+    console.log(allSeconds);
+//     // const indexM = oneComment.dataset.reply;
+//     let timerElement = document.getElementById('modal-time')
+//     timerElement.textContent = getTime(time)
+
+//   }
+
+
+  //Стоп таймер
+
+  function stopTimer () {
+      clearInterval(myInterval);
+  }
 
   let isItFlipped = false;
   let firstCard, secondCard;
   let blockField = false; //блокирование поля с картами в случае когда переворот карт еще не выполнен, а уже произошел клик на новой карте
   const cards = document.querySelectorAll('.gamebox__field-card');
-  //Переворачиваем карту
+
   // console.log(cards);
 
   const timeoutTillStart = () => {
@@ -160,7 +195,7 @@ function gameMode(appEl) {
   // необходима блокировка карт на момент просмотра, с последующей разблокировкой
   timeoutTillStart();
 
-  // console.log(cards);
+    //Переворачиваем карту
   function flipCard() {
       if (blockField) return;
       if (this === firstCard) return;
@@ -192,16 +227,26 @@ function gameMode(appEl) {
           // необходима задержка по выводу сообщения о победе/поражении, т.к. сравнение происходит в момент клика, а это очень быстро = bad UX/UI
           if (
               firstCard.dataset.rank === secondCard.dataset.rank &&
-              firstCard.dataset.nominal === secondCard.dataset.nominal
+              firstCard.dataset.Suit === secondCard.dataset.Suit
           ) {
               preventClick();
-              alert('Вы выйграли');
+            //   alert('Вы выйграли');
           } else {
-              alert('Вы проиграли');
-              turnBack();
+            //   alert('Вы проиграли');
+            const modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            stopTimer();
+            // getTime();
+            window.onclick = function(event) {
+            if (event.target === modal) {              
+                (0,_difficulty_selection_js__WEBPACK_IMPORTED_MODULE_0__.gameDifficulty)(appEl);
+            }
+            };
+            //   turnBack();
           }
       }, 500);
   }
+
   // запрет на повторный клик по карте
 
   function preventClick() {
@@ -232,7 +277,10 @@ function gameMode(appEl) {
   cards.forEach((card) => {
       card.addEventListener('click', flipCard);
   });
+
 }
+
+
 
 
 /***/ }),
