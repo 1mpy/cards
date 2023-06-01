@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -8,18 +9,12 @@
   font-style: normal;
   font-weight: 400;
   /* Браузер сначала попробует найти шрифт локально */
-  src: local("StratosSkyeng"),
-    /* Если не получилось, загрузит woff2 */
-    url("./fonts/stratosskyengweb-regular.woff2") format("woff2"),
-    /* Если браузер не поддерживает woff2, загрузит woff */
-    url("./fonts/stratosskyengweb-regular.woff") format("woff");
+  src: local("StratosSkyeng"), url("./stratosskyengweb-regular.woff2") format("woff2"), url("./stratosskyengweb-regular.woff") format("woff");
 }
-
 .center {
   padding-left: calc(50% - 512px);
   padding-right: calc(50% - 512px);
 }
-
 
 .main {
   background: #004980;
@@ -65,10 +60,11 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: nowrap;
-  column-gap: 24px;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
 }
 
-.difficulty input[type="radio"] {
+.difficulty input[type=radio] {
   display: none;
 }
 
@@ -91,7 +87,7 @@
   align-items: center;
 }
 
-.difficulty input[type="radio"]:checked+label {
+.difficulty input[type=radio]:checked + label {
   background-color: #09522a;
 }
 
@@ -155,11 +151,6 @@
 }
 
 .gamebox__field-card {
-  // width: 95px;
-  // height: 133px;
-  // cursor: pointer;
-  // display: flex;
-  // flex-direction: column-reverse;
   cursor: pointer;
   height: 132px;
   width: 83px;
@@ -167,13 +158,13 @@
   position: relative;
   transform: scale(1);
   transform-style: preserve-3d;
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
 
 .gamebox__field-card:active {
   cursor: pointer;
   transform: scale(0.97);
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .gamebox__field-card.flip {
@@ -192,7 +183,7 @@
 }
 
 .gamebox__timer-units {
-  font-family: 'StratosSkyeng';
+  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -200,14 +191,13 @@
   color: #FFFFFF;
   display: inline-flex;
   padding-left: 39px;
-
-  &-sek {
-    padding-left: 57px;
-  }
+}
+.gamebox__timer-units-sek {
+  padding-left: 57px;
 }
 
 .gamebox__timer-digits {
-  font-family: 'StratosSkyeng';
+  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -251,4 +241,4 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
+}/*# sourceMappingURL=style.css.map */

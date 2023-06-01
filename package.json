@@ -1,29 +1,38 @@
 {
-  "name": "cards",
-  "version": "1.0.0",
-  "description": "Guess where the pair cards are?",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier —write .",
-    "lint:js": "eslint ./*.js",
-    "lint:css": "stylelint ./*.css",
-    "lint:scss": "stylelint ./*.scss",
-    "lint": "npm run lint:js && npm run lint:css",
-    "prepare": "husky install"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.41.0",
-    "husky": "^8.0.3",
-    "prettier": "^2.8.8",
-    "stylelint": "^15.6.2",
-    "stylelint-config-standard": "^33.0.0",
-    "stylelint-prettier": "^3.0.0"
-  },
-  "dependencies": {
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1"
-  }
+    "name": "cards",
+    "version": "1.0.0",
+    "description": "Guess where the pair cards are?",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format": "prettier —write .",
+        "lint:js": "eslint **/*.js",
+        "lint:css": "stylelint **/*.css",
+        "lint:scss": "stylelint **/*.scss",
+        "lint": "npm run lint:js && npm run lint:css",
+        "build": "set NODE_ENV=production && webpack",
+        "start": "webpack-dev-server --open"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "css-loader": "^6.8.1",
+        "css-minimizer-webpack-plugin": "^5.0.0",
+        "eslint": "^8.41.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "html-webpack-plugin": "^5.5.1",
+        "mini-css-extract-plugin": "^2.7.6",
+        "prettier": "^2.8.8",
+        "style-loader": "^3.3.3",
+        "stylelint": "^15.6.2",
+        "stylelint-config-standard": "^33.0.0",
+        "stylelint-prettier": "^3.0.0",
+        "webpack": "^5.84.1",
+        "webpack-cli": "^5.1.1",
+        "webpack-dev-server": "^4.15.0"
+    },
+    "dependencies": {
+        "copy-webpack-plugin": "^11.0.0"
+    }
 }
