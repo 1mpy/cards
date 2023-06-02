@@ -70,7 +70,7 @@ export function gameMode(appEl) {
 
   let cardString = ``;
 
-  cardsUrls.forEach((item) => {
+    cardsUrls.forEach((item) => {
       cardString += `<div class="gamebox__field-card flip" data-rank="${item.rank}" data-Suit="${item.Suit}">
     <img class="gamebox__field-card-face" src="${item.url}" />
     <img class="gamebox__field-card-back" src="./static/images/card_back.svg" />
@@ -82,7 +82,7 @@ export function gameMode(appEl) {
       <div class="gamebox__timer">
         <div class="gamebox__timer-units">min</div>
         <div class="gamebox__timer-units gamebox__timer-units-sek">sek</div>
-        <label class="gamebox__timer-digits" id="minutes" data-min="">00</label><span class='gamebox__timer-digits'>.</span><label class="gamebox__timer-digits" id="seconds" data-sec="">00</label>
+        <label class="gamebox__timer-digits" id="minutes" >00</label><span class='gamebox__timer-digits'>.</span><label class="gamebox__timer-digits" id="seconds" >00</label>
       </div>
       <button class="gamebox__restart-button" id="restart">Начать заново</button>
     </div>
@@ -92,12 +92,11 @@ export function gameMode(appEl) {
   </section>
 <div id="myModal" class="modal">
 <div class="modal-content">
-    <img class="front-face"  src=""/>    
-    <p>Вы проиграли!</p>
+    <img id="modal-img" />    
+    <p id="modal-status"></p>
     <p> Затраченное время:</p>
-    <p id = "modal-time">.</p>
-    <button class="gamebox__restart-button" id="restart">Начать заново</button>
-
+    <p id="modal-time">.</p>
+    <button class="gamebox__restart-button" id="restart-modal">Начать заново</button>
 </div>`;
 
   appEl.innerHTML = appHtml;
@@ -143,18 +142,6 @@ export function gameMode(appEl) {
 
   timer();
 
-//   function getTime() {
-    const allMinutes = document.getElementById("minutes").innerHTML;
-    const allSeconds = document.getElementById("seconds").innerHTML;
-    console.log(allMinutes);
-    console.log(allSeconds);
-//     // const indexM = oneComment.dataset.reply;
-//     let timerElement = document.getElementById('modal-time')
-//     timerElement.textContent = getTime(time)
-
-//   }
-
-
   //Стоп таймер
 
   function stopTimer () {
@@ -193,37 +180,53 @@ export function gameMode(appEl) {
       } else {
           isItFlipped = false;
           secondCard = this;
-          // console.log(firstCard.dataset.rank);
-          // console.log(secondCard.dataset.rank);
-
           match();
       }
       // console.log('done');
   }
 
-  // console.log("click");
-  // console.log(this);
-  // console.log({ isItFlipped, firstCard });
+
 
   // проверка на совпадение
 
   function match() {
       setTimeout(() => {
           // необходима задержка по выводу сообщения о победе/поражении, т.к. сравнение происходит в момент клика, а это очень быстро = bad UX/UI
+          const allMinutes = document.getElementById("minutes").textContent;
+          const allSeconds = document.getElementById("seconds").textContent;
+          const restartModal = document.getElementById("restart-modal");
+          const timeBox = document.getElementById("modal-time");
+          const modal = document.getElementById("myModal");
+          let status = document.getElementById("modal-status");
+          let statusImage = document.getElementById("modal-img");
           if (
               firstCard.dataset.rank === secondCard.dataset.rank &&
               firstCard.dataset.Suit === secondCard.dataset.Suit
           ) {
-              preventClick();
-            //   alert('Вы выйграли');
+            const flippedCards = document.querySelectorAll('.flip');
+            // console.log(flippedCards);
+            if(flippedCards.length === pairNumber*2) {
+                modal.style.display = "block";
+                status.innerText = "Вы победили!"
+                statusImage.src = '/static/images/win.svg'
+                stopTimer();
+                timeBox.textContent = allMinutes + '.' + allSeconds;
+                restartModal.onclick = function(event) {
+                if (event.target === restartModal) {              
+                    gameDifficulty(appEl);
+                }
+                };
+            }            
+            preventClick();
           } else {
-            //   alert('Вы проиграли');
-            const modal = document.getElementById("myModal");
+            preventClick();
             modal.style.display = "block";
+            status.innerText = "Вы проиграли!"
+            statusImage.src = '/static/images/lost.svg'
             stopTimer();
-            // getTime();
-            window.onclick = function(event) {
-            if (event.target === modal) {              
+            timeBox.textContent = allMinutes + '.' + allSeconds;
+            restartModal.onclick = function(event) {
+            if (event.target === restartModal) {              
                 gameDifficulty(appEl);
             }
             };
@@ -242,15 +245,15 @@ export function gameMode(appEl) {
 
   // переворачивание карт обратно
 
-  function turnBack() {
-      blockField = true;
-      setTimeout(() => {
-          firstCard.classList.remove('flip');
-          secondCard.classList.remove('flip');
-          blockField = false;
-          preventDoubleClick();
-      }, 500);
-  }
+//   function turnBack() {
+//       blockField = true;
+//       setTimeout(() => {
+//           firstCard.classList.remove('flip');
+//           secondCard.classList.remove('flip');
+//           blockField = false;
+//           preventDoubleClick();
+//       }, 500);
+//   }
 
   function preventDoubleClick() {
       isItFlipped = false;
