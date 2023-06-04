@@ -1,8 +1,8 @@
 import { gameMode } from './components/createCards';
 
-window.application = {
-    level: null,
-};
+// window.application = {
+//     level: null,
+// };
 
 export function gameDifficulty(appEl: HTMLElement | null) {
   const renderGameDifficulty = (appEl: HTMLElement | null) => {

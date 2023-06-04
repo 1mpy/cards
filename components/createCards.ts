@@ -2,8 +2,12 @@ import { gameDifficulty } from '../difficulty-selection';
 
 declare global {
     interface Window {
-        application: any;
+        application: TypesForCardGame;
     }
+}
+
+interface TypesForCardGame {
+    level: string
 }
 
 export function gameMode(appEl:HTMLElement | null) {
