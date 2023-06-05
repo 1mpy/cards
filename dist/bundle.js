@@ -25,6 +25,14 @@ var __assign = (undefined && undefined.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 
+// interface TypesForCardGame {
+//     level: string
+// }
+// declare global {
+//     interface Window {
+//         application: TypesForCardGame;
+//     }
+// }
 function gameMode(appEl) {
     var pairNumber;
     if (window.application.level === '1') {
@@ -246,9 +254,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_createCards__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/createCards */ "./components/createCards.ts");
 
-// window.application = {
-//     level: null,
-// };
 function gameDifficulty(appEl) {
     var renderGameDifficulty = function (appEl) {
         var appHtml = "<section class=\"game\">\n      <div class=\"game__menu\">          \n          <h2 class=\"game__menu-heading\">\n              \u0412\u044B\u0431\u0435\u0440\u0438 <br/>\n              \u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u044C\n            </h2>\n          <form class=\"difficulty\" id=\"difficulty-form\">\n              <div class=\"difficulty-box\">\n                  <input class=\"difficulty__type\" type=\"radio\" id=\"game1\" name=\"game\" value=\"1\" checked>\n                  <label for=\"game1\">1</label>\n          \n                  <input class=\"difficulty__type\" type=\"radio\" id=\"game2\" name=\"game\" value=\"2\">\n                  <label for=\"game2\">2</label>\n          \n                  <input class=\"difficulty__type\" type=\"radio\" id=\"game3\" name=\"game\" value=\"3\">\n                  <label for=\"game3\">3</label>\n              </div>\n\n              <button class=\"game__menu-button\" type=\"submit\">\u0421\u0442\u0430\u0440\u0442</button> \n          </form>\n      </div>\n  </section>";
@@ -264,7 +269,7 @@ function gameDifficulty(appEl) {
         // for (const difficultyLevel of difficultyLevels) {
         difficultyLevels.forEach(function (difficultyLevel) {
             if (difficultyLevel.checked) {
-                window.application.level = difficultyLevel.value;
+                window.application = { level: difficultyLevel.value };
                 // if (difficultyLevel.value === "1")
                 (0,_components_createCards__WEBPACK_IMPORTED_MODULE_0__.gameMode)(appEl);
             }

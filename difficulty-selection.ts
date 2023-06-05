@@ -4,6 +4,16 @@ import { gameMode } from './components/createCards';
 //     level: null,
 // };
 
+declare global {
+    interface Window {
+        application: TypesForCardGame;
+    }
+}
+
+interface TypesForCardGame {
+    level: string
+}
+
 export function gameDifficulty(appEl: HTMLElement | null) {
   const renderGameDifficulty = (appEl: HTMLElement | null) => {
       const appHtml = `<section class="game">
@@ -41,9 +51,9 @@ export function gameDifficulty(appEl: HTMLElement | null) {
       // for (const difficultyLevel of difficultyLevels) {
       difficultyLevels.forEach((difficultyLevel) => {
           if ((difficultyLevel as HTMLInputElement).checked) {
-              window.application.level = (
-                  difficultyLevel as HTMLInputElement
-              ).value;
+              window.application = {level: (
+                difficultyLevel as HTMLInputElement
+            ).value }
               // if (difficultyLevel.value === "1")
               gameMode(appEl);
           }

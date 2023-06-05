@@ -1,14 +1,14 @@
 import { gameDifficulty } from '../difficulty-selection';
+// interface TypesForCardGame {
+//     level: string
+// }
 
-declare global {
-    interface Window {
-        application: TypesForCardGame;
-    }
-}
+// declare global {
+//     interface Window {
+//         application: TypesForCardGame;
+//     }
+// }
 
-interface TypesForCardGame {
-    level: string
-}
 
 export function gameMode(appEl:HTMLElement | null) {
   let pairNumber:number;
