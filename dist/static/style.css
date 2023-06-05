@@ -9,7 +9,7 @@
   font-style: normal;
   font-weight: 400;
   /* Браузер сначала попробует найти шрифт локально */
-  src: local("StratosSkyeng"), url("./stratosskyengweb-regular.woff2") format("woff2"), url("./stratosskyengweb-regular.woff") format("woff");
+  src: local("StratosSkyeng"), url("./fonts/stratosskyengweb-regular.woff2") format("woff2"), url("./fonts/stratosskyengweb-regular.woff") format("woff");
 }
 .center {
   padding-left: calc(50% - 512px);
@@ -215,8 +215,8 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -226,6 +226,12 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  width: 480px;
+  height: 459px;
+  left: 272px;
+  top: 158px;
+  background: #C2F5FF;
+  border-radius: 12px;
 }
 
 /* The Close Button */

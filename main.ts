@@ -1,5 +1,5 @@
 // import { doc } from "prettier";
-import { gameDifficulty } from './difficulty-selection.js';
+import { gameDifficulty } from './difficulty-selection';
 
 const appEl = document.getElementById('app');
 
