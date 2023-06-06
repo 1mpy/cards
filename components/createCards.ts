@@ -82,19 +82,29 @@ export function gameMode(appEl: HTMLElement | null) {
   </div>`;
   });
 
-  const appHtml = `    <section class="gamebox center">
+  const appHtml = `
+  <section class="gamebox center">
     <div class="gamebox-heading center">
-      <div class="gamebox__timer">
-        <div class="gamebox__timer-units">min</div>
-        <div class="gamebox__timer-units gamebox__timer-units-sek">sek</div>
-        <label class="gamebox__timer-digits" id="minutes" >00</label><span class='gamebox__timer-digits'>.</span><label class="gamebox__timer-digits" id="seconds" >00</label>
-      </div>
-      <button class="gamebox__restart-button" id="restart">Начать заново</button>
+        <div class="gamebox__timer">
+            <div class="gamebox__timer-units">
+                <p class="gamebox__timer-units-min">min</p>
+                <p class="gamebox__timer-units-sek">
+                    sek
+                </p>
+            </div>
+            <div class="gamebox__timer-digits">
+                <label class="gamebox__timer-digits-min" id="minutes">00</label>
+                <span class="gamebox__timer-digits">.</span>
+                <label class="gamebox__timer-digits-sec" id="seconds">00</label>
+            </div>
+        </div>
+        <button class="gamebox__restart-button" id="restart">
+            Начать заново
+        </button>
     </div>
     <div class="gamebox__field">
-  ${cardString}
-  </div>
-  </section>
+    ${cardString}</div>
+</section>
 <div id="myModal" class="modal">
 <div class="modal__content">
     <img class="modal__content-picture" id="modal-img" />    
