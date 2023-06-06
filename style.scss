@@ -219,7 +219,7 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 30; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -229,11 +229,11 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+
 /* Modal Content/Box */
-.modal-content {
+.modal__content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
   width: 480px;
@@ -242,7 +242,49 @@
   top: 158px;
   background: #C2F5FF;
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.modal__content-picture {
+  width: 96px;
+  height: 96px;
+  padding-top: 30px;
+}
+
+.modal__content-status {
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #004980;
+  padding-top: 5px;
+}
+
+.modal__content-totaltime {
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  padding-top: 28px;
+}
+
+.modal__content-digits {
+  font-family: 'StratosSkyeng';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #000000;
+  padding-top: 10px;
+  padding-bottom: 40px;
+}
+
+
 
 /* The Close Button */
 .close {
@@ -258,3 +300,4 @@
   text-decoration: none;
   cursor: pointer;
 }
+

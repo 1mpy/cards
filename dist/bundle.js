@@ -25,14 +25,6 @@ var __assign = (undefined && undefined.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 
-// interface TypesForCardGame {
-//     level: string
-// }
-// declare global {
-//     interface Window {
-//         application: TypesForCardGame;
-//     }
-// }
 function gameMode(appEl) {
     var pairNumber;
     if (window.application.level === '1') {
@@ -100,7 +92,7 @@ function gameMode(appEl) {
     cardsUrls.forEach(function (item) {
         cardString += "<div class=\"gamebox__field-card flip\" data-rank=\"".concat(item.rank, "\" data-Suit=\"").concat(item.Suit, "\">\n    <img class=\"gamebox__field-card-face\" src=\"").concat(item.url, "\" />\n    <img class=\"gamebox__field-card-back\" src=\"./static/images/card_back.svg\" />\n  </div>");
     });
-    var appHtml = "    <section class=\"gamebox center\">\n    <div class=\"gamebox-heading center\">\n      <div class=\"gamebox__timer\">\n        <div class=\"gamebox__timer-units\">min</div>\n        <div class=\"gamebox__timer-units gamebox__timer-units-sek\">sek</div>\n        <label class=\"gamebox__timer-digits\" id=\"minutes\" >00</label><span class='gamebox__timer-digits'>.</span><label class=\"gamebox__timer-digits\" id=\"seconds\" >00</label>\n      </div>\n      <button class=\"gamebox__restart-button\" id=\"restart\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n    </div>\n    <div class=\"gamebox__field\">\n  ".concat(cardString, "\n  </div>\n  </section>\n<div id=\"myModal\" class=\"modal\">\n<div class=\"modal-content\">\n    <img id=\"modal-img\" />    \n    <p id=\"modal-status\"></p>\n    <p> \u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n    <p id=\"modal-time\">.</p>\n    <button class=\"gamebox__restart-button\" id=\"restart-modal\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n</div>");
+    var appHtml = "    <section class=\"gamebox center\">\n    <div class=\"gamebox-heading center\">\n      <div class=\"gamebox__timer\">\n        <div class=\"gamebox__timer-units\">min</div>\n        <div class=\"gamebox__timer-units gamebox__timer-units-sek\">sek</div>\n        <label class=\"gamebox__timer-digits\" id=\"minutes\" >00</label><span class='gamebox__timer-digits'>.</span><label class=\"gamebox__timer-digits\" id=\"seconds\" >00</label>\n      </div>\n      <button class=\"gamebox__restart-button\" id=\"restart\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n    </div>\n    <div class=\"gamebox__field\">\n  ".concat(cardString, "\n  </div>\n  </section>\n<div id=\"myModal\" class=\"modal\">\n<div class=\"modal__content\">\n    <img class=\"modal__content-picture\" id=\"modal-img\" />    \n    <p class=\"modal__content-status\" id=\"modal-status\"></p>\n    <p class=\"modal__content-totaltime\"> \u0417\u0430\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F:</p>\n    <p class=\"modal__content-digits\" id=\"modal-time\">.</p>\n    <button class=\"gamebox__restart-button\" id=\"restart-modal\">\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E</button>\n</div>");
     appEl.innerHTML = appHtml;
     //РЕСТАРТ
     function restart() {
@@ -269,7 +261,9 @@ function gameDifficulty(appEl) {
         // for (const difficultyLevel of difficultyLevels) {
         difficultyLevels.forEach(function (difficultyLevel) {
             if (difficultyLevel.checked) {
-                window.application = { level: difficultyLevel.value };
+                window.application = {
+                    level: difficultyLevel.value,
+                };
                 // if (difficultyLevel.value === "1")
                 (0,_components_createCards__WEBPACK_IMPORTED_MODULE_0__.gameMode)(appEl);
             }

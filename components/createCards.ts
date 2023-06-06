@@ -1,14 +1,4 @@
 import { gameDifficulty } from '../difficulty-selection';
-// interface TypesForCardGame {
-//     level: string
-// }
-
-// declare global {
-//     interface Window {
-//         application: TypesForCardGame;
-//     }
-// }
-
 
 export function gameMode(appEl:HTMLElement | null) {
   let pairNumber:number;
@@ -106,11 +96,11 @@ export function gameMode(appEl:HTMLElement | null) {
   </div>
   </section>
 <div id="myModal" class="modal">
-<div class="modal-content">
-    <img id="modal-img" />    
-    <p id="modal-status"></p>
-    <p> Затраченное время:</p>
-    <p id="modal-time">.</p>
+<div class="modal__content">
+    <img class="modal__content-picture" id="modal-img" />    
+    <p class="modal__content-status" id="modal-status"></p>
+    <p class="modal__content-totaltime"> Затраченное время:</p>
+    <p class="modal__content-digits" id="modal-time">.</p>
     <button class="gamebox__restart-button" id="restart-modal">Начать заново</button>
 </div>`;
 
