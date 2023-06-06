@@ -1,6 +1,6 @@
 import { gameDifficulty } from '../difficulty-selection';
 
-export function gameMode(appEl:HTMLElement | null) {
+export function gameMode(appEl: HTMLElement | null) {
   let pairNumber:number;
 
   if (window.application.level === '1') {
@@ -71,7 +71,7 @@ export function gameMode(appEl:HTMLElement | null) {
       //https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
   });
 
-  // console.log(cardsUrls);
+//   console.log(cardsUrls);
 
   let cardString = ``;
 
@@ -158,7 +158,7 @@ export function gameMode(appEl:HTMLElement | null) {
   let blockField = false; //блокирование поля с картами в случае когда переворот карт еще не выполнен, а уже произошел клик на новой карте
   const cards = document.querySelectorAll('.gamebox__field-card');
 
-  // console.log(cards);
+//   console.log(cards);
 
   const timeoutTillStart = () => {
       blockField = true;
@@ -223,7 +223,7 @@ export function gameMode(appEl:HTMLElement | null) {
               firstCard!.dataset.Suit === secondCard!.dataset.Suit
           ) {
             const flippedCards = document.querySelectorAll('.flip');
-            // console.log(flippedCards);
+            console.log(flippedCards);
             if(flippedCards.length === pairNumber*2) {
                 resultModal('Вы победили', '/static/images/win.svg');
             }            

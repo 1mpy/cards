@@ -4,7 +4,6 @@
     "description": "Guess where the pair cards are?",
     "main": "main.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "format": "prettier —write .",
         "lint:js": "eslint **/*.js",
         "lint:css": "stylelint **/*.css",
@@ -12,11 +11,13 @@
         "lint": "npm run lint:js && npm run lint:css",
         "build": "set NODE_ENV=production && webpack",
         "start": "webpack-dev-server --open",
-        "lint:ts": "tsc --noEmit"
+        "lint:ts": "tsc --noEmit",
+        "test": "jest"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@types/jest": "^29.5.2",
         "css-loader": "^6.8.1",
         "css-minimizer-webpack-plugin": "^5.0.0",
         "eslint": "^8.41.0",
@@ -35,6 +36,7 @@
     },
     "dependencies": {
         "copy-webpack-plugin": "^11.0.0",
+        "jest": "^29.5.0",
         "ts-loader": "^9.4.3",
         "typescript": "^5.1.3"
     }

@@ -87,7 +87,7 @@ function gameMode(appEl) {
             return -1;
         //https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
     });
-    // console.log(cardsUrls);
+    //   console.log(cardsUrls);
     var cardString = "";
     cardsUrls.forEach(function (item) {
         cardString += "<div class=\"gamebox__field-card flip\" data-rank=\"".concat(item.rank, "\" data-Suit=\"").concat(item.Suit, "\">\n    <img class=\"gamebox__field-card-face\" src=\"").concat(item.url, "\" />\n    <img class=\"gamebox__field-card-back\" src=\"./static/images/card_back.svg\" />\n  </div>");
@@ -134,7 +134,7 @@ function gameMode(appEl) {
     var firstCard, secondCard;
     var blockField = false; //блокирование поля с картами в случае когда переворот карт еще не выполнен, а уже произошел клик на новой карте
     var cards = document.querySelectorAll('.gamebox__field-card');
-    // console.log(cards);
+    //   console.log(cards);
     var timeoutTillStart = function () {
         blockField = true;
         setTimeout(function () {
@@ -191,7 +191,7 @@ function gameMode(appEl) {
             if (firstCard.dataset.rank === secondCard.dataset.rank &&
                 firstCard.dataset.Suit === secondCard.dataset.Suit) {
                 var flippedCards = document.querySelectorAll('.flip');
-                // console.log(flippedCards);
+                console.log(flippedCards);
                 if (flippedCards.length === pairNumber * 2) {
                     resultModal('Вы победили', '/static/images/win.svg');
                 }
