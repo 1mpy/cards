@@ -9,7 +9,7 @@
   font-style: normal;
   font-weight: 400;
   /* Браузер сначала попробует найти шрифт локально */
-  src: local("StratosSkyeng"), url("./stratosskyengweb-regular.woff2") format("woff2"), url("./stratosskyengweb-regular.woff") format("woff");
+  src: local("StratosSkyeng"), url("./fonts/stratosskyengweb-regular.woff2") format("woff2"), url("./fonts/stratosskyengweb-regular.woff") format("woff");
 }
 .center {
   padding-left: calc(50% - 512px);
@@ -193,7 +193,7 @@
   padding-left: 39px;
 }
 .gamebox__timer-units-sek {
-  padding-left: 57px;
+  padding-left: 94px;
 }
 
 .gamebox__timer-digits {
@@ -209,23 +209,68 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 30; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modal__content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  width: 480px;
+  height: 459px;
+  left: 272px;
+  top: 158px;
+  background: #C2F5FF;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__content-picture {
+  width: 96px;
+  height: 96px;
+  padding-top: 30px;
+}
+
+.modal__content-status {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #004980;
+  padding-top: 5px;
+}
+
+.modal__content-totaltime {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  padding-top: 28px;
+}
+
+.modal__content-digits {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #000000;
+  padding-top: 10px;
+  padding-bottom: 40px;
 }
 
 /* The Close Button */
