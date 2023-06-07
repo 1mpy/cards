@@ -17,8 +17,8 @@ interface TypesForCardGame {
 export function gameDifficulty(appEl: HTMLElement | null) {
     const renderGameDifficulty = (appEl: HTMLElement | null) => {
         const appHtml = `<section class="game">
-      <div class="game__menu">          
-          <h2 class="game__menu-heading">
+      <div class="game-menu">          
+          <h2 class="game-menu-heading">
               Выбери <br/>
               сложность
             </h2>
@@ -34,7 +34,7 @@ export function gameDifficulty(appEl: HTMLElement | null) {
                   <label for="game3">3</label>
               </div>
 
-              <button class="game__menu-button" type="submit">Старт</button> 
+              <button class="game-menu-button" type="submit">Старт</button> 
           </form>
       </div>
   </section>`;

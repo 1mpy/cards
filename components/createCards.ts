@@ -86,42 +86,42 @@ export function gameMode(appEl: HTMLElement | null) {
   let cardString = ``;
 
     cardsUrls.forEach((item) => {
-      cardString += `<div class="gamebox__field-card flip" data-rank="${item.rank}" data-Suit="${item.Suit}">
-    <img class="gamebox__field-card-face" src="${item.url}" />
-    <img class="gamebox__field-card-back" src="./static/images/card_back.svg" />
+      cardString += `<div class="gamebox-field-card flip" data-rank="${item.rank}" data-Suit="${item.Suit}">
+    <img class="gamebox-field-card-face" src="${item.url}" />
+    <img class="gamebox-field-card-back" src="./static/images/card_back.svg" />
   </div>`;
   });
 
   const appHtml = `
   <section class="gamebox center">
     <div class="gamebox-heading center">
-        <div class="gamebox__timer">
-            <div class="gamebox__timer-units">
-                <p class="gamebox__timer-units-min">min</p>
-                <p class="gamebox__timer-units-sek">
+        <div class="gamebox-timer">
+            <div class="gamebox-timer-units">
+                <p class="gamebox-timer-units-min">min</p>
+                <p class="gamebox-timer-units-sek">
                     sek
                 </p>
             </div>
-            <div class="gamebox__timer-digits">
-                <label class="gamebox__timer-digits-min" id="minutes">00</label>
-                <span class="gamebox__timer-digits">.</span>
-                <label class="gamebox__timer-digits-sec" id="seconds">00</label>
+            <div class="gamebox-timer-digits">
+                <label class="gamebox-timer-digits-min" id="minutes">00</label>
+                <span class="gamebox-timer-digits">.</span>
+                <label class="gamebox-timer-digits-sec" id="seconds">00</label>
             </div>
         </div>
-        <button class="gamebox__restart-button" id="restart">
+        <button class="gamebox-restart-button" id="restart">
             Начать заново
         </button>
     </div>
-    <div class="gamebox__field">
+    <div class="gamebox-field">
     ${cardString}</div>
 </section>
 <div id="myModal" class="modal">
-<div class="modal__content">
-    <img class="modal__content-picture" id="modal-img" />    
-    <p class="modal__content-status" id="modal-status"></p>
-    <p class="modal__content-totaltime"> Затраченное время:</p>
-    <p class="modal__content-digits" id="modal-time">.</p>
-    <button class="gamebox__restart-button" id="restart-modal">Начать заново</button>
+<div class="modal-content">
+    <img class="modal-content-picture" id="modal-img" />    
+    <p class="modal-content-status" id="modal-status"></p>
+    <p class="modal-content-totaltime"> Затраченное время:</p>
+    <p class="modal-content-digits" id="modal-time">.</p>
+    <button class="gamebox-restart-button" id="restart-modal">Начать заново</button>
 </div>`;
 
   appEl!.innerHTML = appHtml;
@@ -176,7 +176,7 @@ export function gameMode(appEl: HTMLElement | null) {
   let isItFlipped = false;
   let firstCard: HTMLElement | null , secondCard: HTMLElement | null;
   let blockField = false; //блокирование поля с картами в случае когда переворот карт еще не выполнен, а уже произошел клик на новой карте
-  const cards = document.querySelectorAll('.gamebox__field-card');
+  const cards = document.querySelectorAll('.gamebox-field-card');
 
 //   console.log(cards);
 
