@@ -10,7 +10,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   gameMode: () => (/* binding */ gameMode)
+/* harmony export */   gameMode: () => (/* binding */ gameMode),
+/* harmony export */   selectPair: () => (/* binding */ selectPair)
 /* harmony export */ });
 /* harmony import */ var _difficulty_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../difficulty-selection */ "./difficulty-selection.ts");
 var __assign = (undefined && undefined.__assign) || function () {
@@ -25,17 +26,26 @@ var __assign = (undefined && undefined.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 
-function gameMode(appEl) {
-    var pairNumber;
-    if (window.application.level === '1') {
-        pairNumber = 3;
+function selectPair(num) {
+    if (num === '1') {
+        return 3;
     }
-    else if (window.application.level === '2') {
-        pairNumber = 6;
+    else if (num === '2') {
+        return 6;
     }
     else {
-        pairNumber = 9;
+        return 9;
     }
+}
+function gameMode(appEl) {
+    var pairNumber = selectPair(window.application.level);
+    //   if (window.application.level === '1') {
+    //       pairNumber = 3;
+    //   } else if (window.application.level === '2') {
+    //       pairNumber = 6;
+    //   } else {
+    //       pairNumber = 9;
+    //   }
     var cardRanks = [
         'ace',
         'king',

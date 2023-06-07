@@ -1,15 +1,25 @@
 import { gameDifficulty } from '../difficulty-selection';
 
-export function gameMode(appEl: HTMLElement | null) {
-  let pairNumber:number;
+export function selectPair(num:string){
+    if (num === '1') {
+        return 3;
+      } else if (num === '2') {
+         return 6;
+      } else {
+          return  9;
+      }
+    }
 
-  if (window.application.level === '1') {
-      pairNumber = 3;
-  } else if (window.application.level === '2') {
-      pairNumber = 6;
-  } else {
-      pairNumber = 9;
-  }
+export function gameMode(appEl: HTMLElement | null) {
+  let pairNumber:number = selectPair(window.application.level);
+
+//   if (window.application.level === '1') {
+//       pairNumber = 3;
+//   } else if (window.application.level === '2') {
+//       pairNumber = 6;
+//   } else {
+//       pairNumber = 9;
+//   }
 
   const cardRanks = [
       'ace',

@@ -1,7 +1,10 @@
-const restart = require('./createCards');
+import { selectPair } from './createCards';
 
-describe('тест рестарта', () => {
-    test('результат выполнения - наличие класса game__menu', () => {
-        expect(restart()).toContain("game__menu");
+describe('тест проверки selectPair ', () => {
+    test('результат выполнения - выводят количество пар карт в выбранной сложности', () => {
+        expect(selectPair("2")).toEqual(6)
+    });
+    test('результат выполнения - выводят количество пар карт в выбранной сложности', () => {
+        expect(selectPair("3")).toEqual(9)
     });
 })
