@@ -2,6 +2,18 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./style.css":
+/*!*******************!*\
+  !*** ./style.css ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./components/createCards.ts":
 /*!***********************************!*\
   !*** ./components/createCards.ts ***!
@@ -348,7 +360,9 @@ var __webpack_exports__ = {};
   \*****************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _difficulty_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./difficulty-selection */ "./difficulty-selection.ts");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./style.css");
 // import { doc } from "prettier";
+
 
 var appEl = document.getElementById('app');
 //Выбор уровня сложности
