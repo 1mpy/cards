@@ -1,3 +1,6 @@
+/*!*************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./style.css ***!
+  \*************************************************************/
 @charset "UTF-8";
 
 * {
@@ -10,8 +13,8 @@
     font-style: normal;
     font-weight: 400;
     src: local('StratosSkyeng'),
-        url('./fonts/stratosskyengweb-regular.woff2') format(woff2),
-        url('./fonts/stratosskyengweb-regular.woff') format(woff);
+        url(ce93393e831d32412096.woff2) format(woff2),
+        url(d7d99bd522cf2d77ce4a.woff) format(woff);
 }
 
 .center {
@@ -287,3 +290,6 @@
     text-decoration: none;
     cursor: pointer;
 } /*# sourceMappingURL=style.css.map */
+
+
+/*# sourceMappingURL=style.css.map*/

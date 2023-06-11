@@ -7,10 +7,15 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    entry: './main.js',
+    entry: './main.ts',
     mode: isProduction === 'production' ? 'production' : 'development',
     module: {
         rules: [
+            {
+                test: /\.ts$/,
+                use: "ts-loader",
+                exclude: /node_modules/,
+              },
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
@@ -25,6 +30,9 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        extensions: [".ts", ".js"],
+      },
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],
         // minimize: true,
@@ -49,7 +57,6 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
-            filename: 'index.html',
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css',
